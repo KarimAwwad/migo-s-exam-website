@@ -1,0 +1,246 @@
+/* style.css */
+
+/* --- Basic Body & Container Styling --- */
+/* Styles for the landing page body */
+.landing-page {
+    margin: 0;
+    overflow: hidden; /* <-- Only applies to the landing page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    color: white;
+    background-color: #1a2a6c; /* Fallback color */
+}
+
+/* General body styles - apply to all pages unless overridden */
+body {
+    font-family: sans-serif; /* Apply a default font to all pages */
+    line-height: 1.6;
+    margin: 0; /* Reset margin for all pages */
+    /* overflow: hidden is removed from here */
+    background-color: #f4f4f4; /* Default background for content pages */
+    color: #333; /* Default text color for content pages */
+    /* Increased padding-top to make space for the fixed header */
+    padding-top: 80px; /* <-- Adjusted from 60px */
+}
+
+
+.container {
+    text-align: center; /* Center the text and button within the container */
+    z-index: 1; /* Ensures the content is above the background */
+    position: relative; /* Needed for z-index to work correctly */
+}
+
+/* --- Button Styling --- */
+.enter-button {
+    display: inline-block; /* Allows padding and margin */
+    padding: 15px 30px; /* Size of the button */
+    font-size: 1.2em; /* Size of the text */
+    cursor: pointer; /* Indicates it's clickable */
+    border: none; /* No default border */
+    border-radius: 5px; /* Slightly rounded corners */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    color: white; /* Button text color */
+    text-decoration: none; /* Removes the default underline from the link */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    backdrop-filter: blur(5px); /* Optional: Adds a subtle blur behind the button for contrast */
+    -webkit-backdrop-filter: blur(5px); /* Safari support for backdrop-filter */
+}
+
+.enter-button:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly less transparent on hover */
+}
+
+/* --- Wavy Gradient Background (Applies to landing page body::before) --- */
+
+/* We'll use a pseudo-element (::before) attached to the landing page body for the background */
+.landing-page::before { /* <-- Target only the landing page body */
+    content: ''; /* Pseudo-elements require the content property, even if empty */
+    position: fixed; /* Fixes the background to the viewport */
+    top: 0;
+    left: 0;
+    width: 200%; /* Make the pseudo-element wider than the viewport */
+    height: 200%; /* Make the pseudo-element taller than the viewport */
+    /*
+    Define your gradient here!
+    linear-gradient(direction, color1, color2, ...);
+    Example: diagonal gradient from bottom-left to top-right with three colors
+    */
+    background: linear-gradient(45deg, #3d3afd, #5b4294, #31105c, #af7beb);
+    background-size: 400% 400%; /* Make the gradient MUCH larger than the pseudo-element */
+    z-index: 0; /* Position behind other content */
+    animation: wavyGradient 15s ease infinite alternate; /* Apply the animation */
+}
+
+/* Define the animation */
+@keyframes wavyGradient {
+    0% {
+        background-position: 0% 50%; /* Start position of the background */
+    }
+    50% {
+        background-position: 100% 50%; /* Middle position */
+    }
+    100% {
+        background-position: 0% 50%; /* Return to start, creating a loop */
+    }
+}
+
+/* --- Styles for Educational Content Page --- */
+
+header {
+    background-color: #ffffff; /* Example: Dark header background */
+    color: rgb(0, 0, 0); /* White text for the header */
+    padding: 0px 0; /* Padding above and below header content */
+    text-align: center; /* Center header content */
+    position: fixed; /* Make the header fixed at the top */
+    width: 100%; /* Header spans the full width */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensure the header stays on top of other content (higher than main) */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow to the header */
+}
+
+header h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.8em; /* Size of the main title in the header */
+}
+
+nav ul {
+    padding: 0;
+    list-style: none; /* Remove bullet points from navigation list */
+}
+
+nav ul li {
+    display: inline; /* Display list items side-by-side */
+    margin: 0 10px; /* Space between navigation items */
+}
+
+nav a {
+    color: rgb(0, 0, 0); /* Color of navigation links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline; /* Underline on hover for feedback */
+}
+
+main {
+    width: 90%; /* Content area width */
+    max-width: 960px; /* Optional: Set a maximum width for large screens */
+    margin: 20px auto; /* Center the main content area and add space above/below */
+    padding: 20px;
+    background-color: white; /* White background for the content block */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around the content block */
+    border-radius: 8px; /* Rounded corners for the content block */
+    position: relative; /* Needed for z-index to work */
+    z-index: 1; /* Ensure main content is above the body::before gradient (if it were present) */
+}
+
+section {
+    margin-bottom: 30px; /* Space between different sections of content */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Add a separator line between sections */
+}
+
+section:last-child {
+    border-bottom: none; /* No border after the last section */
+    padding-bottom: 0;
+}
+
+h2 {
+    color: #555; /* Slightly darker grey for section headings */
+    border-bottom: 2px solid #eee; /* Underline section headings */
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+/* Add styles for specific content types like paragraphs, images, videos, lists, etc. */
+p {
+    margin-bottom: 15px;
+}
+
+img {
+    max-width: 100%; /* Images are responsive and don't overflow */
+    height: auto;
+    display: block; /* Ensures image is on its own line */
+    margin: 15px auto; /* Center images and add space above and below */
+    border-radius: 5px; /* Optional: Add rounded corners to images */
+}
+
+video {
+    max-width: 100%; /* Videos are responsive */
+    height: auto;
+    display: block;
+    margin: 15px auto; /* Center videos */
+    border-radius: 5px; /* Optional: Add rounded corners to videos */
+}
+
+ul, ol {
+    margin-bottom: 15px;
+    padding-left: 20px; /* Add some left padding for list markers */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #777; /* Lighter grey for footer text */
+    font-size: 0.9em;
+}
+
+
+/* --- Optional: Basic Responsiveness --- */
+@media (max-width: 600px) {
+    .enter-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+     .landing-page h1 { /* Target landing page h1 specifically */
+        font-size: 1.5em;
+    }
+    header h1 { /* Adjust header h1 for smaller screens */
+        font-size: 1.4em;
+    }
+    main {
+        width: 95%; /* Slightly wider main content on small screens */
+        padding: 10px;
+    }
+    nav ul li {
+        margin: 0 5px; /* Less space between nav items on small screens */
+    }
+}
+#toc {
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+#toc h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #444;
+}
+
+#toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+#toc ul li {
+    margin-bottom: 10px;
+}
+
+#toc ul li a {
+    text-decoration: none;
+    color: #0077cc;
+    font-weight: bold;
+}
+
+#toc ul li a:hover {
+    text-decoration: underline;
+}

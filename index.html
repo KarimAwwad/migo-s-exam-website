@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحبا بكم في موقعي التعليمي</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /*
+        Basic styling for the layout and button appearance.
+        The complex gradient and animation will go into style.css
+        */
+        body {
+            margin: 0;
+            overflow: hidden; /* Helps prevent scrollbars if animation goes slightly out of bounds */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            min-height: 100vh; /* Full viewport height */
+            font-family: sans-serif; /* You can change this font later */
+            color: white; /* Text color - assuming a darker gradient */
+            /* The background gradient and animation will be applied here or to a pseudo-element in style.css */
+        }
+
+        .container {
+            text-align: center; /* Center the text and button within the container */
+            z-index: 1; /* Ensures the content is above the background */
+            position: relative; /* Needed for z-index to work correctly */
+        }
+
+        .enter-button {
+            display: inline-block; /* Allows padding and margin */
+            padding: 15px 30px; /* Size of the button */
+            font-size: 1.2em; /* Size of the text */
+            cursor: pointer; /* Indicates it's clickable */
+            border: none; /* No default border */
+            border-radius: 5px; /* Slightly rounded corners */
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            color: white; /* Button text color */
+            text-decoration: none; /* Removes the default underline from the link */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+            backdrop-filter: blur(5px); /* Optional: Adds a subtle blur behind the button for contrast */
+        }
+
+        .enter-button:hover {
+            background-color: rgba(255, 255, 255, 0.4); /* Slightly less transparent on hover */
+        }
+
+        /*
+        The CSS for the wavy gradient background animation
+        will be added in the style.css file.
+        */
+
+    </style>
+</head>
+<body class="landing-page">
+
+    <div class="container">
+        <h3>من تصميم محمد احمد محمد</h3>
+        <h1>اهلا و سهلاا!</h1>
+
+        <a href="educational_content.html" class="enter-button">
+            المحتوي التعليمي
+        </a>
+    </div>
+
+    </body>
+</html>
